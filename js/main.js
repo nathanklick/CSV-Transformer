@@ -1,5 +1,5 @@
 RegExp.escape = function(s) {
-    return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+    return (s != null) ? s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&') : s;
 };
 
 jQuery(function(){
@@ -180,7 +180,7 @@ jQuery(function(){
 				else {
 					var search = RegExp.escape($(searchStrings.get(index)).val());
 					var replace = $(replaceStrings.get(index)).val()
-					if (search.length>0) {
+					if (search != null && search.length > 0) {
 						fieldValue = fieldValue.replace(new RegExp(search, "g"), replace);
 					}
 				}
